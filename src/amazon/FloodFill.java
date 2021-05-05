@@ -12,10 +12,10 @@ public class FloodFill {
         tc=image[0].length;
         int oc=image[sr][sc];
         visited=new boolean[tr][tc];
-        bfs(image,sr,sc,newColor,oc);
+        dfs(image,sr,sc,newColor,oc);
         return image;
     }
-    void bfs(int[][] image,int sr,int sc,int nc,int oc){
+    void dfs(int[][] image,int sr,int sc,int nc,int oc){
         if(sr<0||sr>=tr||sc<0||sc>=tc||visited[sr][sc] )return;
         visited[sr][sc]=true;
         if(image[sr][sc]!=oc){
@@ -24,16 +24,16 @@ public class FloodFill {
         }
         if(sc-1>=0 && image[sr][sc-1]==oc)
         {
-            bfs(image,sr,sc-1,nc,oc);
+            dfs(image,sr,sc-1,nc,oc);
         }
         if(sc+1 <tc && image[sr][sc+1]==oc){
-            bfs(image,sr,sc+1,nc,oc);
+            dfs(image,sr,sc+1,nc,oc);
         }
         if(sr+1 < tr && image[sr+1][sc]==oc){
-            bfs(image,sr+1,sc,nc,oc);
+            dfs(image,sr+1,sc,nc,oc);
         }
         if(sr-1 >=0 && image[sr-1][sc]==oc) {
-            bfs(image,sr-1,sc,nc,oc);
+            dfs(image,sr-1,sc,nc,oc);
         }
     }
 }
